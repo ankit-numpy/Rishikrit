@@ -4,7 +4,7 @@ import streamlit as st
 st.set_page_config(page_title="Rishikrit Honey", page_icon="🍯", layout="wide")
 
 # ---- LOGO ----
-st.image("image/logo.jpeg", width=120)  # Place your logo in the "image" folder
+st.image("image/logo.png", width=120)  # Place your logo in the "image" folder
 
 # ---- Horizontal Navigation ----
 st.markdown(
@@ -95,4 +95,5 @@ elif st.session_state.page == "Order":
 
         if submitted:
             st.success(f"Thank you, {name}! 🎉\n\nYour order for {quantity} x {product} has been placed.")
+
 
