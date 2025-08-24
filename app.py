@@ -51,7 +51,7 @@ st.markdown("---")
 # ---- Pages ----
 # Home Page
 if st.session_state.page == "Home":
-    st.image("image/home.jpg", caption="Pure Rishikrit Honey", use_column_width=True)  # Local image
+    st.image("image/home.jpg", caption="Pure Rishikrit Honey", use_container_width=True)  # ✅ Updated
     st.markdown("""
     ### Welcome to Rishikrit
     At Rishikrit, we believe in the power of nature. Our honey is:
@@ -77,7 +77,7 @@ elif st.session_state.page == "Product":
 
     for i, prod in enumerate(products):
         with cols[i]:
-            st.image(prod["img"], use_column_width=True)
+            st.image(prod["img"], use_container_width=True)  # ✅ Updated
             st.markdown(f"**{prod['name']}**")
             st.markdown(f"*Price:* {prod['price']}")
 
@@ -95,5 +95,3 @@ elif st.session_state.page == "Order":
 
         if submitted:
             st.success(f"Thank you, {name}! 🎉\n\nYour order for {quantity} x {product} has been placed.")
-
-
