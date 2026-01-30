@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #fff8e1;
+}
+
+header {
+    background: #f9a825;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.hero {
+    padding: 60px;
+    text-align: center;
+}
+
+.hero button {
+    padding: 12px 25px;
+    background: #f9a825;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.about, .products {
+    padding: 40px;
+    text-align: center;
+}
+
+.card {
+    background: white;
+    display: inline-block;
+    margin: 15px;
+    padding: 20px;
+    width: 200px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ccc;
+}
+
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
