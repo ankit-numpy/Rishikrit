@@ -1,0 +1,35 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+<section class="cart">
+    <h2>Your Cart</h2>
+    {% if items %}
+        <div class="cart-list">
+            {% for item in items %}
+                <div class="cart-item">
+                    <div>
+                        <h3>{{ item.product.name }}</h3>
+                        <p>₹{{ item.product.price }} each</p>
+                    </div>
+                    <form method="post" action="{% url 'store:update_cart' item.product.id %}" class="cart-form">
+                        {% csrf_token %}
+                        <input type="number" name="quantity" min="1" value="{{ item.quantity }}">
+                        <button type="submit">Update</button>
+                    </form>
+                    <div class="line-total">₹{{ item.line_total }}</div>
+                    <a class="remove" href="{% url 'store:remove_from_cart' item.product.id %}">Remove</a>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="cart-summary">
+            <div>
+                <span>Subtotal</span>
+                <strong>₹{{ subtotal }}</strong>
+            </div>
+            <a class="cta" href="{% url 'store:checkout' %}">Proceed to checkout</a>
+        </div>
+    {% else %}
+        <p class="empty">Your cart is empty. Browse honey variants to add products.</p>
+    {% endif %}
+</section>
+{% endblock %}

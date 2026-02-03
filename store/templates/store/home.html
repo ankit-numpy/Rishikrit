@@ -1,0 +1,64 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-text">
+        <h2>Your search for purity ends with Rishikrit</h2>
+        <p>Crafted by beekeepers, curated by nature. Explore our honey variants and taste the difference.</p>
+        <a class="cta" href="{% url 'store:cart' %}">View Cart</a>
+    </div>
+    <div class="hero-card">
+        <h3>Why Rishikrit?</h3>
+        <ul>
+            <li>Single-origin honey harvested seasonally.</li>
+            <li>Lab-tested for purity and freshness.</li>
+            <li>Cold-processed to retain nutrients.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="product-section">
+    <div class="section-title">
+        <h2>Available Honey Variants</h2>
+        <p>Freshly bottled, inventory updated in real time by our team.</p>
+    </div>
+    <div class="product-grid">
+        {% for product in products %}
+            <article class="product-card">
+                <div class="product-image">
+                    {% if product.image_url %}
+                        <img src="{{ product.image_url }}" alt="{{ product.name }}">
+                    {% else %}
+                        <div class="image-placeholder">{{ product.name|slice:':1' }}</div>
+                    {% endif %}
+                </div>
+                <div class="product-info">
+                    <h3>{{ product.name }}</h3>
+                    <p>{{ product.description|default:"Pure and aromatic honey crafted for daily wellness." }}</p>
+                    <div class="product-meta">
+                        <span class="price">₹{{ product.price }}</span>
+                        <span class="stock">In stock: {{ product.inventory }}</span>
+                    </div>
+                    <a class="add-btn" href="{% url 'store:add_to_cart' product.id %}">Add to cart</a>
+                </div>
+            </article>
+        {% empty %}
+            <p class="empty">No products available yet. Add products from the admin panel.</p>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="about">
+    <div>
+        <h2>About Rishikrit</h2>
+        <p>
+            Rishikrit is a honey-first ecommerce destination dedicated to authentic Indian honey varieties.
+            Our mission is to connect farmers with families by keeping the supply chain transparent and fresh.
+        </p>
+    </div>
+    <div class="about-card">
+        <h3>Order & Inventory Management</h3>
+        <p>Our admin panel lets you add or remove products, update inventory, and track every order status.</p>
+    </div>
+</section>
+{% endblock %}

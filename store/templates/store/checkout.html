@@ -1,0 +1,29 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+<section class="checkout">
+    <div class="checkout-details">
+        <h2>Checkout</h2>
+        <form method="post" class="checkout-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="cta">Place order</button>
+        </form>
+    </div>
+    <aside class="order-summary">
+        <h3>Order Summary</h3>
+        <ul>
+            {% for item in items %}
+                <li>
+                    <span>{{ item.product.name }} × {{ item.quantity }}</span>
+                    <strong>₹{{ item.line_total }}</strong>
+                </li>
+            {% endfor %}
+        </ul>
+        <div class="summary-total">
+            <span>Total</span>
+            <strong>₹{{ subtotal }}</strong>
+        </div>
+    </aside>
+</section>
+{% endblock %}
