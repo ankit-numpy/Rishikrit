@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rishikrit Honey</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <header class="site-header">
+        <div class="brand">
+            <span class="brand-mark">🍯</span>
+            <div>
+                <h1>Rishikrit</h1>
+                <p>Purity you can taste, directly from nature.</p>
+            </div>
+        </div>
+        <nav>
+            <a href="{% url 'store:home' %}">Home</a>
+            <a href="{% url 'store:cart' %}">Cart</a>
+            <a href="/admin/">Admin</a>
+        </nav>
+    </header>
+
+    {% if messages %}
+        <section class="messages">
+            {% for message in messages %}
+                <div class="message {{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        </section>
+    {% endif %}
+
+    {% block content %}{% endblock %}
+
+    <footer class="site-footer">
+        <div>
+            <strong>Rishikrit Honey</strong>
+            <p>Available variants: Tulsi, Jamun, Neem, Nilgiri, Himalayan Forest, Litchi, Mustard, Acacia, Ajwain.</p>
+        </div>
+        <div>
+            <p>Email: rishikritagro@gmail.com</p>
+            <p>Contact: +91 9259888333, +91 9548757276</p>
+        </div>
+    </footer>
+</body>
+</html>
